@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ست الكل ❤️</title>
+    <!-- خط عربي كبير وواضح -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
+            color: #4a1c1c;
+            text-align: center;
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
+
+        /* شاشة البداية */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .main-img-box {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(45deg, #d4af37, #ff6b6b);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+            margin-bottom: 25px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .main-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #b31217;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #7a2e2e;
+            margin-bottom: 30px;
+        }
+
+        /* الأزرار الكبيرة */
+        .big-btn {
+            background: linear-gradient(45deg, #e52d27, #b31217);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(179, 18, 23, 0.3);
+            transition: transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .big-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* قسم الصوت */
+        .section {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .audio-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 2px solid #ffd6d6;
+        }
+
+        .play-btn {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #d4af37;
+            color: white;
+            border: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            margin-bottom: 15px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-btn.playing {
+            background: #2b8a3e;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* ألبوم الصور */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 12px;
+        }
+
+        .photo-caption {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #b31217;
+        }
+
+        /* شاشة المفاجأة */
+        .surprise-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            padding: 20px;
+        }
+
+        .surprise-modal h2 {
+            font-size: 2.8rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            animation: pop 0.5s ease;
+        }
+
+        .close-btn {
+            margin-top: 30px;
+            background: white;
+            color: #b31217;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* قلوب بتطير */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 24px;
+            animation: flyUp 4s linear forwards;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(43, 138, 62, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(43, 138, 62, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(43, 138, 62, 0); }
+        }
+
+        @keyframes flyUp {
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.5); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. الشاشة الرئيسية -->
+    <div class="hero">
+        <div class="main-img-box">
+            <img src="main.jpg" alt="أمي">
+        </div>
+        <h1>ست الكل ❤️</h1>
+        <p class="subtitle">بحبك يا أمي</p>
+        <button class="big-btn" onclick="startJourney()">اضغطي هنا 👇</button>
+    </div>
+
+    <!-- 2. قسم الريكورد / الصوت -->
+    <div class="section" id="audio-section">
+        <div class="audio-card">
+            <button class="play-btn" id="playBtn" onclick="toggleAudio()">▶️</button>
+            <h2 style="font-size: 1.7rem; color: #4a1c1c;">اسمعي صوتي 🎙️</h2>
+            <audio id="myAudio" src="voice.mp3"></audio>
+        </div>
+    </div>
+
+    <!-- 3. ألبوم الصور (5 صور) -->
+    <div class="section">
+        <h2 style="margin-bottom: 25px; color: #b31217; font-size: 2rem;">ذكرياتنا ❤️</h2>
+        <div class="gallery">
+            <div class="photo-card">
+                <img src="pic1.jpg" alt="صورة 1">
+                <p class="photo-caption">أحلى ضحكة 😍</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="pic2.jpg" alt="صورة 2">
+                <p class="photo-caption">ربنا يخليكي ليا 🤲</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="pic3.jpg" alt="صورة 3">
+                <p class="photo-caption">أغلى الناس ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="pic4.jpg" alt="صورة 4">
+                <p class="photo-caption">نور عيني ✨</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="pic5.jpg" alt="صورة 5">
+                <p class="photo-caption">بركة البيت 👑</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. زرار الهدية -->
+    <div class="section">
+        <button class="big-btn" style="background: linear-gradient(45deg, #d4af37, #b8860b);" onclick="showSurprise()">
+            هديتك 🎁
+        </button>
+    </div>
+
+    <!-- شاشة المفاجأة -->
+    <div class="surprise-modal" id="surpriseModal">
+        <div style="font-size: 5rem; margin-bottom: 15px;">💐❤️👑</div>
+        <h2>ربنا يديمك نعمة</h2>
+        <p style="font-size: 1.6rem;">في حياتي يا ست الكل</p>
+        <button class="close-btn" onclick="closeSurprise()">إغلاق</button>
+    </div>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const playBtn = document.getElementById('playBtn');
+
+        function startJourney() {
+            document.getElementById('audio-section').scrollIntoView({ behavior: 'smooth' });
+            playAudio();
+            launchHearts(15);
+        }
+
+        function toggleAudio() {
+            if (audio.paused) {
+                playAudio();
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '▶️';
+                playBtn.classList.remove('playing');
+            }
+        }
+
+        function playAudio() {
+            audio.play().then(() => {
+                playBtn.innerHTML = '⏸️';
+                playBtn.classList.add('playing');
+            }).catch(e => {
+                console.log("تحتاج تفاعل لتشغيل الصوت");
+            });
+        }
+
+        audio.onended = function() {
+            playBtn.innerHTML = '▶️';
+            playBtn.classList.remove('playing');
+        };
+
+        function showSurprise() {
+            document.getElementById('surpriseModal').style.display = 'flex';
+            launchHearts(30);
+        }
+
+        function closeSurprise() {
+            document.getElementById('surpriseModal').style.display = 'none';
+        }
+
+        function launchHearts(count) {
+            const emojis = ['❤️', '🌹', '💐', '✨', '👑'];
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 150);
+            }
+        }
+    </script>
+</body>
+</html>
